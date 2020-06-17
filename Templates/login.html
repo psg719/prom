@@ -1,1 +1,25 @@
+<!DOCTYPE html>
 
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8" content="width=device-width, initial-scale=1.0">
+		<title>MedsCheck</title>
+	</head>
+	<body>
+		<form method="POST" action="/login">
+			{{ form.csrf_token }}
+
+				{% for field in form %}
+					{% if field.type != 'CSRFTokenField' %}
+       			<p>{{ field.label() }}
+       			{{ field() }} </p>
+					{% endif %}
+   			{% endfor %}
+
+			{% if form.errors %}
+    		{{ form.errors }}
+			{% endif %}
+		</form>
+
+	</body>
+</html>
